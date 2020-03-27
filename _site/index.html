@@ -32,22 +32,22 @@
       <div class="wrapper">
         <p>This page is the demo of</p>
 <ol>
-  <li>“Non-parallel voice conversion system with WaveNet vocoder and collapsed speech suppression technique” [paper]</li>
+  <li>“Non-parallel voice conversion system with WaveNet vocoder and collapsed speech suppression” [<a href="https://arxiv.org/abs/2003.11750">paper</a>]</li>
   <li>“Collapsed speech segment detection and suppression for WaveNet vocoder” [<a href="https://arxiv.org/abs/1804.11055">paper</a>] [code]</li>
   <li>“The NU non-parallel voice conversion system for the voice conversion challenge 2018” [<a href="https://easychair.org/publications/preprint/mzNP">paper</a>]</li>
 </ol>
 
 <h2 id="abstract"><strong>Abstract</strong></h2>
-<p align="justify"> We propose a non-parallel voice conversion (VC) system with a WaveNet (WN) vocoder and a collapsed speech suppression technique. The effectiveness of WN as a vocoder to generate high-fidelity speech waveforms on the basis of acoustic features has been confirmed in recent works. However, while combining the WN vocoder with the VC system, the distorted acoustic features, acoustic and temporal mismatches, and exposure bias problems usually lead to significant speech quality degradation especially making WN generate some very noisy speech segments called a collapsed speech. To tackle the problem, we take conventional vocoder generated speech as the reference speech to derive a linear-predictive-coding-distribution-constraint (LPCDC) to prevent WN from the collapsed speech problem. Furthermore, to ease the extra negative effects introduced by LPCDC, we propose a collapsed speech segment detector (CSSD) for only applying the LPCDC to the problematic segments to restrict the quality damage in a very short period. </p>
+<p align="justify"> We integrate a simple non-parallel voice conversion (VC) system with a WaveNet (WN) vocoder and a proposed collapsed speech suppression technique. The effectiveness of WN as a vocoder for generating high-fidelity speech waveforms on the basis of acoustic features has been confirmed in recent works. However, when combining the WN vocoder with a VC system, the distorted acoustic features, acoustic and temporal mismatches, and exposure bias usually lead to significant speech quality degradation, making WN generate some very noisy speech segments called collapsed speech. To tackle the problem, we take conventional-vocoder-generated speech as the reference speech to derive a linear predictive coding distribution constraint (LPCDC) to avoid the collapsed speech problem. Furthermore, to mitigate the negative effects introduced by the LPCDC, we propose a collapsed speech segment detector (CSSD) to ensure that the LPCDC is only applied to the problematic segments to limit the loss of quality to short periods. </p>
 <p>Testing corpus: <a href="http://www.vc-challenge.org/">VCC2018</a></p>
 
-<h2 id="collapse-speech-problem"><strong>Collapse speech problem</strong></h2>
+<h2 id="collapsed-speech-problem"><strong>Collapsed speech problem</strong></h2>
 <ul>
   <li><strong>Type I</strong>: white-noise-like segment</li>
   <li><strong>Type II</strong>: short impulse noise</li>
 </ul>
 <center><img src="res/figure/collapsed_speech_problem.jpg" /></center>
-<p>Figure (a): WN-generated waveforms w/ the collapsed speech<br />
+<p>Figure (a): WN-generated waveforms w/ collapsed speech.<br />
 Figure (b): WN-generated waveforms w/ LPCDC and CSSD.</p>
 
 <h2 id="collapsed-speech-segment-detection-cssd"><strong>Collapsed speech segment detection (CSSD)</strong></h2>
@@ -59,9 +59,10 @@ Figure (b): WN-generated waveforms w/ LPCDC and CSSD.</p>
   <li>Compared with the reference</li>
 </ul>
 <center><img src="res/figure/waveform_comparison.jpg" /></center>
-<p>Figure (a): WN-generated waveforms w/ the collapsed speech<br />
-Figure (b): WORLD-generated waveforms (reference)<br />
-Figure (c): Detected waveform shapes</p>
+<p>Figure (a): WN-generated waveforms w/ collapsed speech.<br />
+Figure (b): WORLD-generated waveforms (reference).<br />
+Figure (c): Extracted waveform envelopes.<br />
+Figure (d): Difference in waveform envelope.</p>
 
 <h2 id="lpc-distribution-constraint-lpcdc"><strong>LPC distribution constraint (LPCDC)</strong></h2>
 <ul>
@@ -115,12 +116,12 @@ Figure (c): Detected waveform shapes</p>
       <td style="text-align: center"><audio src="res/audio/CollapsedFree/VCC2SM3-VCC2TM1/DNN+WN/30021.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
-      <td style="text-align: left">DMDN + WN</td>
+      <td style="text-align: left"><strong>DMDN + WN</strong></td>
       <td style="text-align: center"><audio src="res/audio/CollapsedFree/VCC2SF4-VCC2TF1/DMDN+WN/30023.wav" controls="" preload=""></audio></td>
       <td style="text-align: center"><audio src="res/audio/CollapsedFree/VCC2SM3-VCC2TM1/DMDN+WN/30021.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
-      <td style="text-align: left">DMDN + WD</td>
+      <td style="text-align: left">DMDN + WORLD</td>
       <td style="text-align: center"><audio src="res/audio/CollapsedFree/VCC2SF4-VCC2TF1/DMDN+WD/30023.wav" controls="" preload=""></audio></td>
       <td style="text-align: center"><audio src="res/audio/CollapsedFree/VCC2SM3-VCC2TM1/DMDN+WD/30021.wav" controls="" preload=""></audio></td>
     </tr>
@@ -145,7 +146,7 @@ Figure (c): Detected waveform shapes</p>
       <td style="text-align: center"><audio src="res/audio/Collapsed/VCC2SM3-VCC2TM1/DMDN+WN/30033.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
-      <td style="text-align: left">DMDN + WD</td>
+      <td style="text-align: left">DMDN + WORLD</td>
       <td style="text-align: center"><audio src="res/audio/Collapsed/VCC2SF4-VCC2TF1/DMDN+WD/30005.wav" controls="" preload=""></audio></td>
       <td style="text-align: center"><audio src="res/audio/Collapsed/VCC2SM3-VCC2TM1/DMDN+WD/30033.wav" controls="" preload=""></audio></td>
     </tr>
@@ -155,7 +156,7 @@ Figure (c): Detected waveform shapes</p>
       <td style="text-align: center"><audio src="res/audio/Collapsed/VCC2SM3-VCC2TM1/DMDN+LPCDC/30033.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
-      <td style="text-align: left">Proposed</td>
+      <td style="text-align: left"><strong>DMDN + LPCDC + CSSD</strong></td>
       <td style="text-align: center"><audio src="res/audio/Collapsed/VCC2SF4-VCC2TF1/Proposed/30005.wav" controls="" preload=""></audio></td>
       <td style="text-align: center"><audio src="res/audio/Collapsed/VCC2SM3-VCC2TM1/Proposed/30033.wav" controls="" preload=""></audio></td>
     </tr>
@@ -202,12 +203,12 @@ Figure (c): Detected waveform shapes</p>
       <td style="text-align: center"><audio src="res/audio/CollapsedFree/VCC2SM4-VCC2TF2/DNN+WN/30019.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
-      <td style="text-align: left">DMDN + WN</td>
+      <td style="text-align: left"><strong>DMDN + WN</strong></td>
       <td style="text-align: center"><audio src="res/audio/CollapsedFree/VCC2SF3-VCC2TM2/DMDN+WN/30003.wav" controls="" preload=""></audio></td>
       <td style="text-align: center"><audio src="res/audio/CollapsedFree/VCC2SM4-VCC2TF2/DMDN+WN/30019.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
-      <td style="text-align: left">DMDN + WD</td>
+      <td style="text-align: left">DMDN + WORLD</td>
       <td style="text-align: center"><audio src="res/audio/CollapsedFree/VCC2SF3-VCC2TM2/DMDN+WD/30003.wav" controls="" preload=""></audio></td>
       <td style="text-align: center"><audio src="res/audio/CollapsedFree/VCC2SM4-VCC2TF2/DMDN+WD/30019.wav" controls="" preload=""></audio></td>
     </tr>
@@ -232,7 +233,7 @@ Figure (c): Detected waveform shapes</p>
       <td style="text-align: center"><audio src="res/audio/Collapsed/VCC2SM4-VCC2TF2/DMDN+WN/30005.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
-      <td style="text-align: left">DMDN + WD</td>
+      <td style="text-align: left">DMDN + WORLD</td>
       <td style="text-align: center"><audio src="res/audio/Collapsed/VCC2SF3-VCC2TM2/DMDN+WD/30017.wav" controls="" preload=""></audio></td>
       <td style="text-align: center"><audio src="res/audio/Collapsed/VCC2SM4-VCC2TF2/DMDN+WD/30005.wav" controls="" preload=""></audio></td>
     </tr>
@@ -242,7 +243,7 @@ Figure (c): Detected waveform shapes</p>
       <td style="text-align: center"><audio src="res/audio/Collapsed/VCC2SM4-VCC2TF2/DMDN+LPCDC/30005.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
-      <td style="text-align: left">Proposed</td>
+      <td style="text-align: left"><strong>DMDN + LPCDC + CSSD</strong></td>
       <td style="text-align: center"><audio src="res/audio/Collapsed/VCC2SF3-VCC2TM2/Proposed/30017.wav" controls="" preload=""></audio></td>
       <td style="text-align: center"><audio src="res/audio/Collapsed/VCC2SM4-VCC2TF2/Proposed/30005.wav" controls="" preload=""></audio></td>
     </tr>
@@ -251,12 +252,12 @@ Figure (c): Detected waveform shapes</p>
 
 <p><br /></p>
 <ul>
-  <li>Subjective results I: <strong>MOS</strong></li>
+  <li>Subjective evaluation I: <strong>MOS</strong> of naturalness.</li>
 </ul>
 <center><img src="res/figure/MOS.jpg" /></center>
 <p><br /></p>
 <ul>
-  <li>Subjective results II: <strong>Similarity</strong></li>
+  <li>Subjective evaluation II: <strong>Speaker similarity</strong></li>
 </ul>
 <center><img src="res/figure/Similarity.jpg" /></center>
 
